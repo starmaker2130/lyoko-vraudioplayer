@@ -1,6 +1,6 @@
 # VRAudioPlayer
 
-for kiesse and melissa
+_for kiesse and melissa_
 
 an audio player for web VR experiences and distributed applications
 
@@ -10,7 +10,7 @@ Developers can implement the module in both modular server-side and non-modular 
 
 ## Examples:
 
-* build and share your own vr music playlist
+* Build and Share Your Own VR Music Playlist
 
 ## Usage:
 
