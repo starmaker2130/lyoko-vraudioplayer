@@ -1,10 +1,10 @@
-# VRAudioPlayer
+# LyokoVRAudioPlayer
 
 _for kiesse and melissa_
 
-an audio player for web VR experiences and distributed applications
+an audio player for distributed immersive applications built in Lyoko
 
-The **_VRAudioPlayer_** generates an audio player that users can experience in virtual reality through a web browser on most mobile, laptop, desktop, or tablet devices. Experiences are produced using Three.js/AFrame to achieve a secure, cross-platform standard for sharing audio on the Immersive Web.
+The **_LyokoVRAudioPlayer_** generates an audio player that users can experience in virtual reality through a pARk browser on most mobile, laptop, desktop, or tablet devices. Experiences are produced using Three.js/AFrame to achieve a secure, cross-platform standard for sharing audio on the Immersive Web.
 
 Developers can implement the module in both modular server-side and non-modular client-side applications with just a few lines of JavaScript code.
 
@@ -21,15 +21,15 @@ Developers can implement the module in both modular server-side and non-modular 
 ### Server-Side
  1. install using npm
 ```javascript
-npm install vraudioplayer
+npm install lyoko-vraudioplayer
 ```
- 2. import vraudioplayer (using the 'require' method is recommended; some Node releases do not have the newest ES6 features enabled by default)
- 
+ 2. import lyoko-vraudioplayer (using the 'require' method is recommended; some Node releases do not have the newest ES6 features enabled by default)
+
  3. add audio files to your playlist then build it
 
  (a) using add method
 ```javascript
-var myPlayer = require('vraudioplayer');
+var myPlayer = require('lyoko-vraudioplayer');
 
 myPlayer.add('../media/img/You.png', '../media/audio/You.mp3' , { title: 'you', author: 'Unibe@t', year: 2016});
 
@@ -49,7 +49,7 @@ myPlayer.spawn();
 an object or array of objects in the following format can be processed by the module to generate same outcome as above
 
 ```javascript
-var myPlayer = require('vraudioplayer');
+var myPlayer = require('lyoko-vraudioplayer');
 
 var collection = {
     'you': {
@@ -107,11 +107,10 @@ myPlayer.spawn();
 ### Client-Side
 
 1. download the boilerplate or make your own test directory
-2. move to the app.js or index.js level of the directory and create a test.js file
-3. implement as follows:
+2. create a test.js file:
 
 ```javascript
-var myPlayer = new VRAudioPlayer();
+var myPlayer = new LyokoVRAudioPlayer();
 myPlayer.build();
 
 myPlayer.add('../media/img/You.png', '../media/audio/You.mp3' , { title: 'you', author: 'Unibe@t', year: 2016});
@@ -127,25 +126,26 @@ myPlayer.add('../media/img/0001.png', '../media/audio/WaterToWine.mp3' , { title
 coreEventListeners.launch([myPlayer]);
 ```
 
+3. run "node test.js" to render the player
+
 ### Full API
 
 
 | property       | type   | description |
 | ------------- |:-------------:| -----:|
-| type          | string       | short paragraph descriptor of type property |
-| socket        | object        |  short paragraph descriptor of socket object |
-| hello         | method        | short paragraph descriptor of hello method|
-| buildCoreMarkup | method        | short paragraph descriptor of buildCoreMarkup method|
-| spawn         | method        | short paragraph descriptor of spawn method|
-| assetsContainer | object        | short paragraph descriptor of assetContainer object |
-| build         | method        | short paragraph descriptor of build method |
-| add           | method        | short paragraph descriptor of add method |
-| addFromList   | method        | short paragraph descriptor of addFromList method |
-| showTrackList | method        | short paragraph descriptor of showTrackList method |
-| playNextTrack | method        | short paragraph descriptor of playNextTrack method |
-| playPreviousTrack | method  |  short paragraph descriptor of playPreviousTrack method |
-| stream        | method        | short paragraph descriptor of type method |
-| application   | object        | short paragraph descriptor of type object |
+| type          | string       | the object type of the Player |
+| socket        | object        |  the web socket connection the Player uses for IP communication |
+| hello         | method        | the initiator method|
+| buildCoreMarkup | method        | builds the core visual components of the Player|
+| spawn         | method        | adds the Player to the Environment|
+| assetsContainer | object        | the Player's immersive asset manager |
+| build         | method        | builds the core behavioral components of the Player|
+| add           | method        | adds a user-defined Track |
+| addFromList   | method        | compiles a Playlist from a user-defined Collection |
+| showTrackList | method        | shows the currently compiled Playlist |
+| playNextTrack | method        | plays the next Track in the Playlist |
+| playPreviousTrack | method  |  plays the previous Track in the Playlist |
+| stream        | method        | streams the Player content |
+| application   | object        | the application programming interface for the Player |
 | view          | string        | short paragraph descriptor of type property |
-| XRSetting     | string        | short paragraph descriptor of type property |
-    
+| XRSetting     | string        | the current Format or View of the Player |

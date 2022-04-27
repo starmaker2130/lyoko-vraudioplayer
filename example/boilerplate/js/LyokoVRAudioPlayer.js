@@ -1,22 +1,22 @@
-VRAudioPlayer = function(){
+LyokoVRAudioPlayer = function(){
     this.type ="vraudio";
     this.socket = null;
 };
 
-VRAudioPlayer.prototype.spawn = function(){
+LyokoVRAudioPlayer.prototype.spawn = function(){
     var self = this;
     self.socket = io.connect(location.host);
     //self.socket.emit("spawnVRAudioPlaylist", {status: true});
 };
 
-VRAudioPlayer.prototype.build = function(){
+LyokoVRAudioPlayer.prototype.build = function(){
     console.log("spawning");
     var self = this;
     self.application.core.tether = $("#main-app-container");
     self.application.core.build();
 };
 
-VRAudioPlayer.prototype.add = function(coverURL, audioURL, metadata){
+LyokoVRAudioPlayer.prototype.add = function(coverURL, audioURL, metadata){
     var self = this;
     var index;
     index = self.application.core.trackList.length;
@@ -37,7 +37,7 @@ VRAudioPlayer.prototype.add = function(coverURL, audioURL, metadata){
    // console.log(`<img id="${track.texture}" src="${track.cover}" preload="true" />`);
 };
 
-VRAudioPlayer.prototype.addFromList = function(collection){
+LyokoVRAudioPlayer.prototype.addFromList = function(collection){
     var self = this;
     var list = collection;
 
@@ -61,26 +61,26 @@ VRAudioPlayer.prototype.addFromList = function(collection){
     }
 }
 
-VRAudioPlayer.prototype.showTrackList = function(){
+LyokoVRAudioPlayer.prototype.showTrackList = function(){
     console.log("TODO: show track list method");
 };
 
-VRAudioPlayer.prototype.playNextTrack = function(){
+LyokoVRAudioPlayer.prototype.playNextTrack = function(){
     var self = this;
     self.application.core.playNextTrack();
 }
 
-VRAudioPlayer.prototype.playPreviousTrack= function(){
+LyokoVRAudioPlayer.prototype.playPreviousTrack= function(){
     var self = this;
     self.application.core.playPreviousTrack();
 };
 
-VRAudioPlayer.prototype.stream= function(){
+LyokoVRAudioPlayer.prototype.stream= function(){
     var self = this;
     self.application.core.stream();
 };
 
-VRAudioPlayer.prototype.application = {
+LyokoVRAudioPlayer.prototype.application = {
     focus: 0, // 0 = home; 1 = audio; 2 = visual; 3 = search
     renderer: [
         "AR",
@@ -298,6 +298,6 @@ VRAudioPlayer.prototype.application = {
     }
 };
 
-VRAudioPlayer.prototype.view = "scroll"; // scroll is the default, list is the secondary option, tertiary mode is the alternative AR or VR view
+LyokoVRAudioPlayer.prototype.view = "scroll"; // scroll is the default, list is the secondary option, tertiary mode is the alternative AR or VR view
 
-VRAudioPlayer.prototype.XRSetting = "vr";
+LyokoVRAudioPlayer.prototype.XRSetting = "vr";

@@ -1,7 +1,7 @@
 {
-  "name": "vraudioplayer",
-  "version": "0.14.1",
-  "description": "audio player interface for web VR projects made by Patrice-Morgan Ongoly for the House of Venus",
+  "name": "lyoko-vraudioplayer",
+  "version": "1.0.1",
+  "description": "an audio player for Lyoko projects controlled through a VR interface; by Patrice-Morgan O. de Goma for the House of Venus",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,21 @@
     "type": "git",
     "url": "git+https://github.com/starmaker2130/vraudioplayer.git"
   },
-  "author": "Patrice-Morgan Ongoly (http://houseofven.us)",
+  "author": "Patrice-Morgan Ongoly de Goma (https://patrice-morgan.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/starmaker2130/vraudioplayer/issues"
   },
-  "homepage": "https://github.com/starmaker2130/vraudioplayer#readme"
+  "homepage": "https://github.com/starmaker2130/vraudioplayer#readme",
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "lyoko",
+    "vr",
+    "audio",
+    "player",
+    "media",
+    "vraudioplayer"
+  ]
 }
