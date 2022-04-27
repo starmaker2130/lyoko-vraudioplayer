@@ -1,16 +1,21 @@
 "use strict";
-// author(s):  Patrice-Morgan Ongoly
-// version: 0.13.14
-// last modified: Sunday, January 6, 2019 02:12 PST
-// description: 
+// author(s):  Patrice-Morgan Ongoly de Goma
+// version: 1.0.0
+// last modified: Tuesday, April 26, 2022 21:27 EST
+// description:
 
 // required modules
 var bodyParser = require('body-parser');
 var express = require('express');
 var WhichBrowser = require('which-browser');
+
+const http = require('http');
 // main application instance
 
 var app = express();
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 // main application settings
 
@@ -23,7 +28,7 @@ var config = {
         './media/audio', //3
         './media/icon', //4
         './media/img', //5
-        './media/pattern', //6 
+        './media/pattern', //6
         './media/model', //7
         './media/texture', //8
         './room' //9
@@ -39,7 +44,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.static('/'));
- 
+
 
 function checkInitialDeviceConnectionType(headers, ip){
     var result = new WhichBrowser(headers);
@@ -60,7 +65,7 @@ app.get('/', function(req, res){
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var headers = req.headers;
     checkInitialDeviceConnectionType(headers, ip);
-    
+
     res.render('index.html',{root: dir[0]});
 });
 
@@ -110,11 +115,24 @@ app.get('/room/:room_id', function(req, res){
     res.sendFile(room+'.html',{root: dir[9]});
 });
 
-var io = require('socket.io').listen(app.listen(config.PORT, function(){
+/*var io = require('socket.io').listen(app.listen(config.PORT, function(){
     console.log(`[0] listening on port ${config.PORT}`);
-}));
+}));*/
 
+io.on('connection', (socket) => {
+  console.log('client connected.');
+  var conn = socket;
 
+  ///////
+  socket.on('disconnect', function(){
+      console.log(`socket ${socket.id} disconnected.`);
+  });
+});
+
+server.listen(config.PORT, () => {
+  console.log('listening on *:',config.PORT);
+});
+/*
 io.sockets.on('connection', function(socket){
     console.log('client connected.');
     var conn = socket;
@@ -124,3 +142,4 @@ io.sockets.on('connection', function(socket){
         console.log(`socket ${socket.id} disconnected.`);
     });
 });
+*/

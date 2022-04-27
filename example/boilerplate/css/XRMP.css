@@ -58,3 +58,25 @@ input[type='button'], #xr-setting{
     background-size: 100% 100%;
 }
 
+#play-previous-track-button{
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  border: 0;
+  border-radius: 50%;
+  text-align: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+#play-next-track-button{
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  border: 0;
+  border-radius: 50%;
+  text-align: center;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.6);
+}

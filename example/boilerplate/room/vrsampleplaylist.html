@@ -1,0 +1,51 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>VRAudioPlayer| spawn| v. 2.0.0</title>
+            <link rel=stylesheet type="text/css" href='../../css/XRMP.css' />
+            <script src='../js/jquery-3.2.1.min.js'></script>
+            <script src='../js/aframe.min.js'></script>
+            <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+            <script src='../js/coreUX.js'></script> <!-- handles movement, styling, and interactivity of core ui components in the dom -->
+            <script src='../js/VRAudioPlayer.js'></script> <!-- contains the class function for creating vr audio player objects -->
+            <script>
+
+                document.addEventListener('DOMContentLoaded', function(){
+                    var player = new VRAudioPlayer();   //create an vr audio player object
+                    player.build();
+                    player.add('../media/img/You.png',
+                                '../media/audio/you.mp3',
+                                {
+                                  title: 'you',
+                                  author: 'Unibe@t',
+                                  year: '2016'}
+                                );
+                    player.add('../media/img/ReadyOrNot.png', '../media/audio/ReadyOrNot.mp3',
+                    {title: 'Ready or Not', author: 'ConsciousThoughts', year: '2016'});
+                    player.add('../media/img/HighedUp.png', '../media/audio/HighedUp.mp3',
+                    {title: 'HIGHED UP', author: 'SOUDIERE ft. kloudbug', year: '2016'});
+                    player.add('../media/img/ServinFeens.png',
+                    '../media/audio/ServinFeens.mp3',
+                    {title: 'SERVIN FEENS', author: 'mythic', year: '2016'});
+                    player.add('../media/img/00001.png',
+                    '../media/audio/WaterToWine.mp3',
+                    {title: 'Water to Wine', author: 'KAYTRANADA ft. Kali Uchis', year: '2016'});
+                    coreEventListeners.launch([player]);    //  tell the core page launcher to start
+                                                            //  playing audio once the app is launched by the user (on screen tap)
+
+                });
+            </script>
+        </head>
+        <body>
+           <div id='launch-application-page' class='entry-layer overlay'>
+                <div id='instructions'>
+                    tap anywhere
+                    <div id='logo'></div>
+                    to launch
+                </div>
+            </div>
+            <div id='main-app-container' class='viewer-layer'>
+            </div>
+        </body>
+        </html>
